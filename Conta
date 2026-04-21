@@ -1,0 +1,30 @@
+interface Conta {
+    double getSaldo();
+    void deposita(double valor);
+    void retira(double valor);
+    void atualiza(double taxaSelic);
+}
+
+interface ContaTributavel extends Conta, Tributavel { }
+
+class ContaCorrentePadrao implements ContaTributavel {
+    private double saldo;
+
+    public double getSaldo() { return saldo; }
+    public void deposita(double v) { saldo += v; }
+    public void retira(double v) { saldo -= v; }
+    public void atualiza(double t) { saldo += (saldo * t); }
+
+    public double calculaTributos(double taxa) {
+        return this.saldo * (taxa / 2);
+    }
+}
+
+class ContaPoupancaPadrao implements Conta {
+    private double saldo;
+
+    public double getSaldo() { return saldo; }
+    public void deposita(double v) { saldo += v; }
+    public void retira(double v) { saldo -= v; }
+    public void atualiza(double t) { saldo += (saldo * (t / 2)); }
+}
