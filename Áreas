@@ -1,0 +1,44 @@
+interface AreaCalculavel {
+    double calculaArea();
+}
+
+class Quadrado implements AreaCalculavel {
+    private int lado;
+
+    Quadrado(int lado) {
+        this.lado = lado;
+    }
+
+    @Override
+    public double calculaArea() {
+        return this.lado * this.lado;
+    }
+}
+
+class Circulo implements AreaCalculavel {
+    private double raio;
+
+    Circulo(double raio) {
+        this.raio = raio;
+    }
+
+    @Override
+    public double calculaArea() {
+        return Math.PI * (raio * raio);
+    }
+}
+
+class Retangulo implements AreaCalculavel {
+    private int base;
+    private int altura;
+
+    Retangulo(int base, int altura) {
+        this.base = base;
+        this.altura = altura;
+    }
+
+    @Override
+    public double calculaArea() {
+        return this.base * this.altura;
+    }
+}
